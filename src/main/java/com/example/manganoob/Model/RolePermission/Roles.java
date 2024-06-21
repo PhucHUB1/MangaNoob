@@ -1,5 +1,6 @@
-package com.example.manganoob.Model;
+package com.example.manganoob.Model.RolePermission;
 
+import com.example.manganoob.Model.Users;
 import jakarta.persistence.*;
 
 import java.util.Date;

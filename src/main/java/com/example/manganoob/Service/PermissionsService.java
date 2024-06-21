@@ -1,8 +1,6 @@
 package com.example.manganoob.Service;
 
-import com.example.manganoob.Model.Permissions;
-import com.example.manganoob.Model.Roles;
-import com.example.manganoob.Model.Users;
+import com.example.manganoob.Model.RolePermission.Permissions;
 import com.example.manganoob.Repository.PermissionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

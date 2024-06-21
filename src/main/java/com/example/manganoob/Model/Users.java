@@ -1,5 +1,6 @@
 package com.example.manganoob.Model;
 
+import com.example.manganoob.Model.RolePermission.Roles;
 import jakarta.persistence.*;
 
 @Entity

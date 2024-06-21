@@ -1,8 +1,9 @@
 package com.example.manganoob.Service;
 
-import com.example.manganoob.Model.Roles;
+import com.example.manganoob.Model.RolePermission.Roles;
 import com.example.manganoob.Model.Users;
 import com.example.manganoob.Repository.RolesRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class RolesService {
     @Autowired
     private RolesRepository rolesRepository;
+
 
     public List<Roles> getAllRoles() {
         return rolesRepository.findAll();
@@ -35,5 +37,11 @@ public class RolesService {
     }
     public void deleteRoleById(int id) {
         rolesRepository.deleteById(id);
+        rolesRepository.resetAutoIncrement();
+    }
+    @Transactional
+    public void deleteAllRoles() {
+        rolesRepository.deleteAll();
+        rolesRepository.resetAutoIncrement();
     }
 }

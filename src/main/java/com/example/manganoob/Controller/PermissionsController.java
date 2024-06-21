@@ -1,6 +1,6 @@
 package com.example.manganoob.Controller;
 
-import com.example.manganoob.Model.Permissions;
+import com.example.manganoob.Model.RolePermission.Permissions;
 import com.example.manganoob.Service.PermissionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

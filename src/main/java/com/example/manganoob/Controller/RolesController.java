@@ -1,6 +1,6 @@
 package com.example.manganoob.Controller;
 
-import com.example.manganoob.Model.Roles;
+import com.example.manganoob.Model.RolePermission.Roles;
 import com.example.manganoob.Service.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,43 +15,58 @@ public class RolesController {
     @Autowired
     private RolesService rolesService;
 
-   @PostMapping("/")
-   public Roles addRole(@RequestBody Roles role) {
+
+    @PostMapping("/")
+    public Roles addRole(@RequestBody Roles role) {
         return rolesService.createRole(role);
     }
+
     @GetMapping
     public List<Roles> getAllRole() {
         return rolesService.getAllRoles();
     }
+
     @GetMapping("{id}")
     public ResponseEntity<Roles> getRoleById(@PathVariable int id) {
         Optional<Roles> optionalRoles = rolesService.getRoleById(id);
         if (optionalRoles.isPresent()) {
             return ResponseEntity.ok(optionalRoles.get());
-        }else {
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
+
     @PutMapping("{id}")
     public ResponseEntity<Roles> updateRole(@PathVariable int id, @RequestBody Roles role) {
-       Optional<Roles> optionalRoles = rolesService.getRoleById(id);
-       if (optionalRoles.isPresent()) {
-           Roles updateRoles = optionalRoles.get();
-           updateRoles.setRole_name(role.getRole_name());
-           Roles rolesUpdate = rolesService.updateRoleById(id,updateRoles).getRoles();
-           return ResponseEntity.ok(rolesUpdate);
-       }
+        Optional<Roles> optionalRoles = rolesService.getRoleById(id);
+        if (optionalRoles.isPresent()) {
+            Roles updateRoles = optionalRoles.get();
+            updateRoles.setRole_name(role.getRole_name());
+            Roles rolesUpdate = rolesService.updateRoleById(id, updateRoles).getRoles();
+            return ResponseEntity.ok(rolesUpdate);
+        }
         return ResponseEntity.notFound().build();
     }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Roles> deleteRoleById(@PathVariable int id) {
         Optional<Roles> optionalRoles = rolesService.getRoleById(id);
         if (optionalRoles.isPresent()) {
             rolesService.deleteRoleById(id);
-        }else {
+        } else {
             throw new IllegalArgumentException("Role not found");
         }
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/delete-all")
+    public ResponseEntity<String> deleteAllEntities() {
+        try {
+            rolesService.deleteAllRoles();
+            return ResponseEntity.ok("Deleted all entities and reset ID successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("An error occurred: " + e.getMessage());
+        }
+
+    }
 }

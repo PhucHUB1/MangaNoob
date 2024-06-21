@@ -1,4 +1,4 @@
-package com.example.manganoob.Model;
+package com.example.manganoob.Model.RolePermission;
 
 import jakarta.persistence.*;
 
