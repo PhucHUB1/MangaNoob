@@ -59,14 +59,5 @@ public class RolesController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/delete-all")
-    public ResponseEntity<String> deleteAllEntities() {
-        try {
-            rolesService.deleteAllRoles();
-            return ResponseEntity.ok("Deleted all entities and reset ID successfully.");
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("An error occurred: " + e.getMessage());
-        }
-
-    }
 }
+
