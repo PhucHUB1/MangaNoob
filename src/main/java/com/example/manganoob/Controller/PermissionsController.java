@@ -43,17 +43,17 @@ public class PermissionsController {
         }
             return ResponseEntity.notFound().build();
     }
-//    @DeleteMapping("{id}")
-//    public ResponseEntity<Permissions> deletePermissionById(@PathVariable int id) {
-//        Optional<Permissions> optionalPermissions = permissionsService.getPermissionById(id);
-//        if (optionalPermissions.isPresent()) {
-//            permissionsService.deletePermissionById(id);
-//        }else {
-//            throw new IllegalArgumentException("Permission not found");
-//        }
-//        return ResponseEntity.ok().build();
-//
-//    }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Permissions> deletePermissionById(@PathVariable int id) {
+        Optional<Permissions> optionalPermissions = permissionsService.getPermissionById(id);
+        if (optionalPermissions.isPresent()) {
+            permissionsService.deletePermissionById(id);
+        }else {
+            throw new IllegalArgumentException("Permission not found");
+        }
+        return ResponseEntity.ok().build();
 
+    }
+//
 }
 
