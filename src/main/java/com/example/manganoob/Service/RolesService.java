@@ -30,7 +30,7 @@ public class RolesService {
             roles.setId(id);
             return this.rolesRepository.save(roles).getUsers();
         } else {
-            throw new IllegalArgumentException("User not found");
+            throw new IllegalArgumentException("Role not found");
         }
     }
     public void deleteRoleById(int id) {
