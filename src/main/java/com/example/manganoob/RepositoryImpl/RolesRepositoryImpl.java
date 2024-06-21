@@ -1,5 +1,6 @@
-package com.example.manganoob.Repository;
+package com.example.manganoob.RepositoryImpl;
 
+import com.example.manganoob.Repository.RolesRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
