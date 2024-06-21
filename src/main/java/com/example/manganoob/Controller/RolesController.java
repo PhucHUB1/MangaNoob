@@ -53,11 +53,23 @@ public class RolesController {
         Optional<Roles> optionalRoles = rolesService.getRoleById(id);
         if (optionalRoles.isPresent()) {
             rolesService.deleteRoleById(id);
+            rolesService.AlterRole();
         } else {
             throw new IllegalArgumentException("Role not found");
         }
         return ResponseEntity.ok().build();
     }
+    @DeleteMapping("/delete-all")
+    public ResponseEntity<String> deleteAllEntities() {
+        try {
+            rolesService.deleteAllRole();
+            rolesService.AlterRole();
+            rolesService.TruncateRole();
+            return ResponseEntity.ok("Deleted all Roles and reset ID successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("An error occurred: " + e.getMessage());
+        }
 
+    }
 }
 

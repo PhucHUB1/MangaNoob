@@ -35,14 +35,21 @@ public class RolesService {
             throw new IllegalArgumentException("Role not found");
         }
     }
-    public void deleteRoleById(int id) {
-        rolesRepository.deleteById(id);
-        rolesRepository.resetAutoIncrement();
+    @Transactional
+    public void deleteAllRole() {
+        rolesRepository.deleteAll();
     }
     @Transactional
-    public void deleteAllRoles() {
-        rolesRepository.deleteAll();
-        rolesRepository.resetAutoIncrement();
+    public void deleteRoleById(int id) {
+        rolesRepository.deleteById(id);
     }
-    /////
+    @Transactional
+    public void AlterRole() {
+        rolesRepository.AlterTableRoles();
+    }
+    @Transactional
+    public void TruncateRole() {
+        rolesRepository.TruncateTableRoles();
+    }
+
 }
